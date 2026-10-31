@@ -169,7 +169,7 @@ section.alt { background: var(--panel); border-top: 1px solid var(--line); borde
 .secHead h2 small { display: block; font-family: var(--sans); font-size: 11px; color: var(--accent-2); letter-spacing: .3em; text-transform: uppercase; margin-top: 2px; }
 .secHead p.lead { color: var(--muted); margin: 10px 0 0; font-size: 14px; }
 h3.sub { font-size: 20px; color: var(--white); border-left: 4px solid var(--accent); padding-left: 12px; margin: 32px 0 16px; letter-spacing: .08em; }
-h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-spacing: .06em; }
+h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-spacing: .06em; }
 .leadTxt { font-family: var(--serif); font-size: 18px; line-height: 2.2; color: var(--white); letter-spacing: .06em; }
 .note { font-size: 12px; color: var(--muted); }
 
@@ -275,7 +275,7 @@ h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-spacing
 .menuList li .pr { white-space: nowrap; color: var(--accent-2); font-family: var(--serif); }
 .menuList li::after { content: ""; }
 .menuBox { background: var(--panel); border: 1px solid var(--line); padding: 20px 22px; }
-.menuBox h4 { margin-top: 0; }
+.menuBox h4, .menuBox .h4 { margin-top: 0; }
 
 /* 地図・埋め込み */
 .mapWrap { border: 1px solid var(--line-strong); background: #000; }
@@ -287,7 +287,7 @@ h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-spacing
 
 /* 店舗ページ共通：コンセプト帯 */
 .concept { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.concept .en { font-family: var(--serif); font-size: 44px; color: var(--accent); letter-spacing: .2em; line-height: 1; margin-bottom: 10px; opacity: .9; }
+.concept .en { font-family: var(--serif); font-weight: 500; font-size: 44px; color: var(--accent); letter-spacing: .2em; line-height: 1; margin-bottom: 10px; opacity: .9; }
 .featureList { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
 .featureList li { padding: 10px 0 10px 18px; border-bottom: 1px solid var(--line); position: relative; font-size: 14px; }
 .featureList li::before { content: ""; position: absolute; left: 0; top: 19px; width: 8px; height: 8px; background: var(--accent); }
@@ -309,7 +309,7 @@ h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-spacing
 /* footer */
 #footMenu { background: #000; border-top: 2px solid var(--accent); padding: 40px 0 0; margin-top: 40px; }
 #footMenu .footInner { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 32px; max-width: 1280px; margin: 0 auto; padding: 0 16px 32px; }
-#footMenu h4 { margin: 0 0 10px; font-size: 14px; color: var(--white); border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+#footMenu h4, #footMenu .h4 { margin: 0 0 10px; font-size: 14px; color: var(--white); border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 #footMenu ul { list-style: none; padding: 0; margin: 0; }
 #footMenu li { font-size: 13px; padding: 4px 0; }
 #footMenu li a { color: var(--muted); }
