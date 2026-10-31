@@ -1,0 +1,94 @@
+# 公開サイトの自動点検
+#   - 毎週月曜 9:00（日本時間）と、push の 5 分後に www.keikadou.co.jp を確認する
+#   - 問題があれば、このリポジトリに Issue を立てる（GitHub からメールで通知が届く）
+#   - 問題が直ると、その Issue を自動で閉じる
+name: site-check
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 反映を待つ（push 直後のみ）
+        if: github.event_name == 'push'
+        run: sleep 300
+
+      - name: サイトを点検
+        id: check
+        shell: bash
+        run: |
+          HOST="www.keikadou.co.jp"; BASE="https://$HOST"; NG=0; LOG=""
+          ng() { echo "NG: $*"; LOG="$LOG- $*"$'\n'; NG=$((NG+1)); }
+          code() { curl -s -o /dev/null --max-time 30 -w '%{http_code}' "$1"; }
+          final() { curl -s -o /dev/null --max-time 30 -L -w '%{url_effective}' "$1"; }
+
+          # DNS
+          cname=$(dig +short CNAME "$HOST" | sed 's/\.$//')
+          [ "$cname" = "mrymgn2022.github.io" ] || ng "www の CNAME が「$cname」になっている（期待: mrymgn2022.github.io）"
+          dig +short MX keikadou.co.jp | grep -q 'alpha-mail.net' || ng "MX レコードにアルファメールが見当たらない"
+
+          # 証明書の期限
+          exp=$(echo | openssl s_client -servername "$HOST" -connect "$HOST:443" 2>/dev/null | openssl x509 -noout -enddate | sed 's/notAfter=//')
+          if [ -n "$exp" ]; then
+            days=$(( ($(date -d "$exp" +%s) - $(date +%s)) / 86400 ))
+            [ "$days" -ge 14 ] || ng "証明書の期限まで $days 日（$exp）"
+          else ng "証明書を取得できない"; fi
+
+          # HTTPS への転送
+          for u in "http://$HOST/" "http://keikadou.co.jp/" "https://keikadou.co.jp/"; do
+            f=$(final "$u"); [ "$f" = "$BASE/" ] || ng "$u の行き先が $f"
+          done
+
+          # 全ページ
+          for u in $(curl -s "$BASE/sitemap.xml" | grep -oE '<loc>[^<]+</loc>' | sed -E 's#</?loc>##g') "$BASE/css/style.css" "$BASE/js/main.js" "$BASE/robots.txt"; do
+            c=$(code "$u"); [ "$c" = "200" ] || ng "$c $u"
+          done
+          c=$(code "$BASE/this-page-does-not-exist"); [ "$c" = "404" ] || ng "存在しない URL が $c を返す"
+
+          # 旧 URL の転送
+          for pair in "/store/kadoya/ /bar-kadoya.html" "/store/kuriharaya/ /kuriharaya.html" "/store/soba-kadoya-yushimatenjin/ /soba-kadoya-tenjin.html" "/store/kadoya-kuromoncho-stand/ /soba-kadoya-kasuga.html" "/highball/ /highball.html" "/supporting-foods/ /ate.html" "/special-foods-from-miyazaki/ /miyagi.html" "/home/ /"; do
+            set -- $pair
+            curl -s --max-time 30 "$BASE$1" | grep -q "http-equiv=\"refresh\" content=\"0; url=$2\"" || ng "旧URL $1 が $2 へ転送されない"
+          done
+
+          # 中身
+          body=$(curl -s "$BASE/")
+          echo "$body" | grep -q 'けいか堂' || ng "トップページに社名が見当たらない（別のサイトが表示されている可能性）"
+          echo "$body" | grep -qE '(src|href)="http://' && ng "トップページに http:// で読み込む要素がある"
+
+          echo "NG=$NG"
+          {
+            echo "ng=$NG"
+            echo "log<<EOF"
+            printf '%s' "$LOG"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: 問題があれば Issue を立てる／直っていれば閉じる
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          NG: ${{ steps.check.outputs.ng }}
+          LOG: ${{ steps.check.outputs.log }}
+        shell: bash
+        run: |
+          TITLE="【要確認】サイトの自動点検で問題が見つかりました"
+          existing=$(gh issue list --state open --search "\"$TITLE\" in:title" --json number --jq '.[0].number')
+          if [ "${NG:-1}" != "0" ]; then
+            BODY="$(date -u -d '+9 hours' '+%Y-%m-%d %H:%M') JST の自動点検で次の問題が見つかりました。"$'\n\n'"${LOG:-（点検自体が失敗しました。Actions のログを確認してください）}"$'\n\n'"手元での再確認: \`bash check-live.sh\`"
+            if [ -n "$existing" ]; then gh issue comment "$existing" --body "$BODY"; else gh issue create --title "$TITLE" --body "$BODY"; fi
+            exit 1
+          else
+            if [ -n "$existing" ]; then gh issue close "$existing" --comment "$(date -u -d '+9 hours' '+%Y-%m-%d %H:%M') JST の自動点検で問題が解消していることを確認しました。"; fi
+          fi

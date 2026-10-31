@@ -44,7 +44,7 @@
         "https://www.instagram.com/kuriharaya_official/",
         "https://www.instagram.com/kadoya_tenjin/",
         "https://www.instagram.com/kadoya_terasu/",
-        "https://www.facebook.com/%E3%82%AB%E3%83%89%E3%83%A4-272851466187315/"
+        "https://www.facebook.com/people/%E3%82%AB%E3%83%89%E3%83%A4/100063585445427/"
       ],
       "subOrganization": [
         {"@id": "https://www.keikadou.co.jp/bar-kadoya.html#shop"},
@@ -98,17 +98,17 @@
 <!-- ===== メインビジュアル ===== -->
 <div id="topMainBnr">
   <div id="topMainBnrFrame">
-    <div class="slider" aria-label="メインビジュアル">
-      <div class="slide active"><img src="images/hero-kakubin.jpg" alt="バーカドヤの角瓶と銅マグ" width="1200" height="800" fetchpriority="high" decoding="async" fetchpriority="high"><div class="cap">銅マグで飲む、本当に美味しいハイボール<small>BAR KADOYA</small></div></div>
+    <div class="slider" role="region" aria-roledescription="スライドショー" aria-label="メインビジュアル">
+      <div class="slide active"><img src="images/hero-kakubin.jpg" alt="バーカドヤの角瓶と銅マグ" width="1200" height="800" fetchpriority="high" decoding="async"><div class="cap">銅マグで飲む、本当に美味しいハイボール<small>BAR KADOYA</small></div></div>
       <div class="slide"><img src="images/hero-sake.jpg" alt="くりはら屋の宮城の地酒 伯楽星・綿屋・栗駒山" width="1600" height="1100" loading="lazy" decoding="async"><div class="cap">宮城北部の酒と肴<small>KURIHARAYA</small></div></div>
-      <div class="slide"><img src="images/hero-soba-night.jpg" alt="蕎麦酒場 角ヤ 夜の外観" width="300" height="300" loading="lazy" decoding="async"><div class="cap">呑んで、つまんで、蕎麦で〆る<small>SOBA SAKABA KADOYA</small></div></div>
+      <div class="slide"><img src="images/tenjin-noren.jpg" alt="蕎麦酒場 角ヤ 湯島天神の暖簾と看板" width="1400" height="1430" loading="lazy" decoding="async"><div class="cap">呑んで、つまんで、蕎麦で〆る<small>SOBA SAKABA KADOYA</small></div></div>
       <div class="slide"><img src="images/hero-foods.jpg" alt="カドヤの煮込とナポリタン" width="1200" height="800" loading="lazy" decoding="async"><div class="cap">一品一品、心を込めて<small>酒場のアテ</small></div></div>
       <div class="slide"><img src="images/hero-cheers.jpg" alt="銅マグで乾杯" width="986" height="656" loading="lazy" decoding="async"><div class="cap">湯島天神下で、今夜も乾杯<small>YUSHIMA, TOKYO</small></div></div>
-      <div class="slide"><img src="images/hero-bar-counter.jpg" alt="バーカドヤのカウンター" width="375" height="288" loading="lazy" decoding="async"><div class="cap">照明が落ち着く、暖かく懐かしい雰囲気<small>BAR KADOYA</small></div></div>
+      <div class="slide"><img src="images/kadoya-counter.jpg" alt="バーカドヤのカウンター" width="1200" height="800" loading="lazy" decoding="async"><div class="cap">照明が落ち着く、暖かく懐かしい雰囲気<small>BAR KADOYA</small></div></div>
     </div>
     <button class="sliderNav prev" aria-label="前の写真">‹</button>
     <button class="sliderNav next" aria-label="次の写真">›</button>
-    <div class="sliderDots"></div>
+    <div class="sliderCtl"><button type="button" class="sliderPause" aria-pressed="false" aria-label="スライドの自動再生を一時停止">❚❚ 一時停止</button><div class="sliderDots"></div></div>
   </div>
 </div>
 
@@ -124,8 +124,8 @@
     <div class="secHead"><h2>お知らせ<small>information</small></h2></div>
     <ul class="infoList">
       <li><time datetime="2026-10">2026.10</time><span class="infoCate">WEB</span><span>公式サイトをリニューアルしました。各店舗の最新情報はInstagramでも発信しています。</span></li>
-      <li><time>通年</time><span class="infoCate">営業</span><span>各店 18:00から深夜まで営業、日曜定休。角ヤ 湯島天神は翌3:00まで（金曜は翌4:00）。祝日・年末年始など営業時間が変わる場合は各店SNSでお知らせします。</span></li>
-      <li><time>通年</time><span class="infoCate">ご予約</span><span>各店舗へお電話ください。貸切・宴会のご相談も承ります。</span></li>
+      <li><span class="when">通年</span><span class="infoCate">営業</span><span>各店 18:00から深夜まで営業、日曜定休。角ヤ 湯島天神は翌3:00まで（金曜は翌4:00）。祝日・年末年始など営業時間が変わる場合は各店SNSでお知らせします。</span></li>
+      <li><span class="when">通年</span><span class="infoCate">ご予約</span><span>各店舗へお電話ください。貸切・宴会のご相談も承ります。</span></li>
     </ul>
     <div class="caution" style="margin-top:18px">感染症の流行状況や天候により、営業時間・定休日が記載と異なる場合がございます。ご来店の際は事前に各店舗へご確認ください。</div>
   </div>
@@ -226,7 +226,7 @@
       <a class="btn ig" href="https://www.instagram.com/kuriharaya_official/" target="_blank" rel="noopener">くりはら屋 Instagram</a>
       <a class="btn ig" href="https://www.instagram.com/kadoya_tenjin/" target="_blank" rel="noopener">角ヤ 湯島天神 Instagram</a>
       <a class="btn ig" href="https://www.instagram.com/kadoya_terasu/" target="_blank" rel="noopener">角ヤ 春日テラス Instagram</a>
-      <a class="btn fb" href="https://www.facebook.com/%E3%82%AB%E3%83%89%E3%83%A4-272851466187315/" target="_blank" rel="noopener">バーカドヤ Facebook</a>
+      <a class="btn fb" href="https://www.facebook.com/people/%E3%82%AB%E3%83%89%E3%83%A4/100063585445427/" target="_blank" rel="noopener">バーカドヤ Facebook</a>
     </div>
   </div>
 </section>
