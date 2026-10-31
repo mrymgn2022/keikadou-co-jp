@@ -431,3 +431,18 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
 .infoList .when, .histList li .when { color: var(--muted); font-size: 13px; }
 .histList li .when { color: var(--accent-2); font-family: var(--serif); }
 @media print { .sliderCtl { display: none !important; } }
+
+/* ---------- 4店舗マップ（Google マイマップの埋め込み。2026-10-31 静止画から置き換え） ---------- */
+.mapWrap-all iframe { height: 480px; }
+.mapKeysRow { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px 32px; margin-top: 14px; }
+.mapKeys { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, auto); gap: 4px 28px; counter-reset: shop; }
+.mapKeys li { font-size: 14px; counter-increment: shop; display: flex; align-items: baseline; gap: 8px; }
+.mapKeys li::before { content: counter(shop); display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: var(--accent); color: #000; font-family: var(--serif); font-weight: 700; font-size: 12px; flex: 0 0 auto; align-self: center; }
+.mapKeys li a { color: #fff; }
+.mapKeys li a:hover { color: var(--accent-2); }
+.mapKeys li small { color: var(--muted); font-size: 12px; }
+.mapKeysRow + .note, .mapKeysRow .note { flex-basis: 100%; margin: 0; }
+@media (max-width: 640px) {
+  .mapWrap-all iframe { height: 380px; }
+  .mapKeys { grid-template-columns: 1fr; }
+}
