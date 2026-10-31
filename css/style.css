@@ -423,14 +423,9 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
 .faqList details p { margin: 0; padding: 0 16px 14px 42px; font-size: 14px; color: var(--text); }
 .faqList details p::before { content: "A"; color: var(--accent-2); font-weight: 700; margin-left: -22px; margin-right: 10px; }
 
-/* ---------- 品質向上（2026-10-31）：スライド一時停止・お知らせの時期表示 ---------- */
-.sliderCtl { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 10px 0 0; }
-.sliderCtl .sliderDots { padding: 0; }
-.sliderPause { background: #000; color: var(--muted); border: 1px solid var(--line-strong); font-size: 11px; letter-spacing: .1em; padding: 3px 10px; cursor: pointer; line-height: 1.6; }
-.sliderPause:hover, .sliderPause[aria-pressed="true"] { color: var(--accent-2); border-color: var(--accent); }
+/* ---------- 品質向上（2026-10-31）：お知らせの時期表示 ---------- */
 .infoList .when, .histList li .when { color: var(--muted); font-size: 13px; }
 .histList li .when { color: var(--accent-2); font-family: var(--serif); }
-@media print { .sliderCtl { display: none !important; } }
 
 /* ---------- 4店舗マップ（Google マイマップの埋め込み。2026-10-31 静止画から置き換え） ---------- */
 .mapWrap-all iframe { height: 480px; }
