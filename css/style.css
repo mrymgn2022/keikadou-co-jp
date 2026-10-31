@@ -279,7 +279,8 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
 
 /* 地図・埋め込み */
 .mapWrap { border: 1px solid var(--line-strong); background: #000; }
-.mapWrap iframe { display: block; width: 100%; height: 360px; border: 0; filter: grayscale(.2) contrast(1.05); }
+/* iframe に filter を掛けると iPhone の Safari で地図が指で動かせなくなるため、色の加工はしない */
+.mapWrap iframe { display: block; width: 100%; height: 360px; border: 0; touch-action: auto; }
 .embedWrap { background: var(--panel); border: 1px solid var(--line); padding: 16px; }
 .embedWrap .instagram-media { margin: 0 auto !important; max-width: 540px !important; min-width: 0 !important; border-radius: 0 !important; }
 .igRow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
