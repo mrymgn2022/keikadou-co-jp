@@ -165,8 +165,8 @@ section[id] { scroll-margin-top: 48px; }
 section { padding: 56px 0; }
 section.alt { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .secHead { margin-bottom: 28px; border-top: 2px solid var(--accent); padding-top: 14px; }
-.secHead h2 { font-size: 26px; color: var(--white); letter-spacing: .1em; }
-.secHead h2 small { display: block; font-family: var(--sans); font-size: 11px; color: var(--accent-2); letter-spacing: .3em; text-transform: uppercase; margin-top: 2px; }
+.secHead h1, .secHead h2 { font-size: 26px; color: var(--white); letter-spacing: .1em; }
+.secHead h1 small, .secHead h2 small { display: block; font-family: var(--sans); font-size: 11px; color: var(--accent-2); letter-spacing: .3em; text-transform: uppercase; margin-top: 2px; }
 .secHead p.lead { color: var(--muted); margin: 10px 0 0; font-size: 14px; }
 h3.sub { font-size: 20px; color: var(--white); border-left: 4px solid var(--accent); padding-left: 12px; margin: 32px 0 16px; letter-spacing: .08em; }
 h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-spacing: .06em; }
@@ -401,7 +401,7 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
   #gMenu, #menuToggle, #topMainBnr, .sliderDots, #pagetop, .skipLink, .subNav, .btnRow, .btn, .embedWrap, .igRow, .mapWrap, .caution { display: none !important; }
   #header, #footMenu, section.alt, .storeCard, .menuBox, .prCard, .infoTable th { background: #fff !important; color: #000 !important; }
   a { color: #000; }
-  .secHead h2, #pageTitBnr h1, h3, h4, .storeCard h3, .infoTable th { color: #000 !important; }
+  .secHead h1, .secHead h2, #pageTitBnr h1, h3, h4, .storeCard h3, .infoTable th { color: #000 !important; }
   #pageTitBnr { background: none !important; } #pageTitBnr::before { display: none; }
   .infoTable th, .infoTable td { border-color: #999; }
   .frame img { border-color: #ccc; }

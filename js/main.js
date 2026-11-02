@@ -40,6 +40,7 @@
   var here = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('#gMenu .menu > li > a, #footMenu a').forEach(function (a) {
     var href = (a.getAttribute('href') || '').split('#')[0];
+    if (href === '/') { href = 'index.html'; }
     if (href && href === here) {
       var li = a.closest('li');
       if (li && li.parentNode.classList.contains('menu')) { li.classList.add('current'); a.setAttribute('aria-current', 'page'); }
@@ -178,7 +179,16 @@
     var fri = el.getAttribute('data-fri');
     if (day === 0) { el.textContent = '本日（日曜）は定休日です'; el.classList.add('closed'); if (!hours) el.style.color = '#e9a84b'; return; }
     if (hours) { el.textContent = '本日の営業 ' + ((day === 5 && fri) ? fri + '（金曜）' : hours) + ' ／ 日曜定休'; }
-    else { el.textContent = '本日 18:00 より営業（日曜定休）'; el.style.color = '#f0ece4'; }
+    else { el.textContent = '本日 17:00（バーカドヤ）／18:00 より営業（日曜定休）'; el.style.color = '#f0ece4'; }
+  });
+
+  /* ---- 電話番号のタップを Google アナリティクスに記録（phone_call イベント） ---- */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'phone_call', { phone_number: a.getAttribute('href').replace('tel:', ''), page_title: document.title });
+      }
+    });
   });
 
   /* ---- URLをコピー（店舗ページの共有ボタン） ---- */
