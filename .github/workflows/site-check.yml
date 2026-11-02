@@ -56,7 +56,7 @@ jobs:
           c=$(code "$BASE/this-page-does-not-exist"); [ "$c" = "404" ] || ng "存在しない URL が $c を返す"
 
           # 旧 URL の転送
-          for pair in "/store/kadoya/ /bar-kadoya.html" "/store/kuriharaya/ /kuriharaya.html" "/store/soba-kadoya-yushimatenjin/ /soba-kadoya-tenjin.html" "/store/kadoya-kuromoncho-stand/ /soba-kadoya-kasuga.html" "/kadoya/ /bar-kadoya.html" "/kuriharaya/ /kuriharaya.html" "/soba-kadoya-yushimatenjin/ /soba-kadoya-tenjin.html" "/kadoya-kuromoncho-stand/ /soba-kadoya-kasuga.html" "/sample-page/ /" "/sitemap.html /" "/highball/ /highball.html" "/supporting-foods/ /ate.html" "/special-foods-from-miyazaki/ /miyagi.html" "/home/ /"; do
+          for pair in "/store/kadoya/ /bar-kadoya.html" "/store/kuriharaya/ /kuriharaya.html" "/store/soba-kadoya-yushimatenjin/ /soba-kadoya-tenjin.html" "/store/kadoya-kuromoncho-stand/ /soba-kadoya-kasuga.html" "/kadoya/ /bar-kadoya.html" "/kuriharaya/ /kuriharaya.html" "/soba-kadoya-yushimatenjin/ /soba-kadoya-tenjin.html" "/kadoya-kuromoncho-stand/ /soba-kadoya-kasuga.html" "/sample-page/ /" "/sitemap.html /" "/highball/ /highball.html" "/supporting-foods/ /ate.html" "/special-foods-from-miyazaki/ /miyagi.html" "/home/ /" "/%E8%95%8E%E9%BA%A6%E9%85%92%E5%A0%B4%E3%80%80%E8%A7%92%E3%83%A4/ /soba-kadoya-tenjin.html?utm_source=tabelog&utm_medium=referral"; do
             set -- $pair
             curl -s --max-time 30 "$BASE$1" | grep -q "http-equiv=\"refresh\" content=\"0; url=$2\"" || ng "旧URL $1 が $2 へ転送されない"
           done
