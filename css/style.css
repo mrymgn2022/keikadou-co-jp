@@ -256,6 +256,13 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
 .menuBox { background: var(--panel); border: 1px solid var(--line); padding: 20px 22px; }
 .menuBox h4, .menuBox .h4 { margin-top: 0; }
 
+/* 店舗ページ下部「OTHER SHOPS」：他店の情報は載せず、トップの店舗一覧へ送る */
+.otherShops { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 30px 16px; border: 1px solid var(--line-strong); color: var(--white); text-decoration: none; }
+.otherShops .en { font-family: var(--serif); font-size: 26px; letter-spacing: .25em; }
+.otherShops small { font-size: 12px; color: var(--muted); letter-spacing: .1em; }
+.otherShops:hover { border-color: var(--accent); }
+.otherShops:hover small { color: var(--accent-2); }
+
 /* 地図・埋め込み */
 .mapWrap { border: 1px solid var(--line-strong); background: #000; position: relative; isolation: isolate; }
 /* iframe 自体に filter を掛けると iPhone の Safari で地図が指で動かせなくなる（2026-10-31）。
@@ -349,7 +356,16 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
   #site-title .brandTxt strong { font-size: 14px; letter-spacing: .04em; }
   #site-title .brandTxt small { display: none; }
   #headContact { display: none; }
-  #menuToggle { display: block; background: #000; color: #fff; border: 1px solid var(--accent); padding: 8px 14px; font-size: 13px; letter-spacing: .15em; cursor: pointer; }
+  /* ハンバーガー（三本線）。開くと×になる（2026-11-07 オーナー指示で「MENU」の文字をやめた） */
+  #menuToggle { display: block; position: relative; width: 44px; height: 44px; background: #000; border: 1px solid var(--accent); padding: 0; cursor: pointer; flex: 0 0 auto; }
+  #menuToggle .bars, #menuToggle .bars::before, #menuToggle .bars::after { position: absolute; left: 11px; width: 20px; height: 2px; background: #fff; transition: transform .2s, background .2s; }
+  #menuToggle .bars { top: 20px; }
+  #menuToggle .bars::before, #menuToggle .bars::after { content: ""; left: 0; }
+  #menuToggle .bars::before { top: -7px; }
+  #menuToggle .bars::after { top: 7px; }
+  #menuToggle[aria-expanded="true"] .bars { background: transparent; }
+  #menuToggle[aria-expanded="true"] .bars::before { transform: translateY(7px) rotate(45deg); }
+  #menuToggle[aria-expanded="true"] .bars::after { transform: translateY(-7px) rotate(-45deg); }
   #gMenu .menu { display: none; flex-direction: column; }
   #gMenu .menu.open { display: flex; }
   #gMenu .menu > li, #gMenu .menu > li:first-child { border: 0; border-bottom: 1px solid var(--line); }

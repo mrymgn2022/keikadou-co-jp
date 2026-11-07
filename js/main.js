@@ -26,12 +26,12 @@
     toggle.addEventListener('click', function () {
       var open = menu.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.textContent = open ? 'CLOSE' : 'MENU';
+      toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
     });
     /* リンクを押したら閉じる（同一ページ内リンク用） */
     menu.addEventListener('click', function (e) {
       if (e.target.closest('a') && menu.classList.contains('open')) {
-        menu.classList.remove('open'); toggle.textContent = 'MENU'; toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'メニューを開く');
       }
     });
   }
