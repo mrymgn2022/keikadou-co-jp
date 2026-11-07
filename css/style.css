@@ -283,7 +283,9 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
    そのため iframe には触らず、上に重ねた透明の層の backdrop-filter で地図だけをモノクロにする（層は pointer-events:none で指の操作を通す） */
 .mapWrap iframe { display: block; width: 100%; height: 360px; border: 0; touch-action: auto; }
 .mapWrap::after { content: ""; position: absolute; inset: 0; pointer-events: none; -webkit-backdrop-filter: grayscale(1); backdrop-filter: grayscale(1); }
-.embedWrap { background: var(--panel); border: 1px solid var(--line); padding: 16px; }
+/* SNS（Instagram・Facebook）の埋め込みも地図と同じ方法でモノクロにする（2026-11-07 オーナー指示。写真も含めて白黒になる） */
+.embedWrap { background: var(--panel); border: 1px solid var(--line); padding: 16px; position: relative; isolation: isolate; }
+.embedWrap::after { content: ""; position: absolute; inset: 0; pointer-events: none; -webkit-backdrop-filter: grayscale(1); backdrop-filter: grayscale(1); }
 .embedWrap .instagram-media { margin: 0 auto !important; max-width: 540px !important; min-width: 0 !important; border-radius: 0 !important; }
 .igRow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .snsLinks { display: flex; flex-wrap: wrap; gap: 8px; }
