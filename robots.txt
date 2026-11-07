@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /sample-ig/
 
 Sitemap: https://www.keikadou.co.jp/sitemap.xml

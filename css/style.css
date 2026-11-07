@@ -69,24 +69,6 @@ table { border-collapse: collapse; width: 100%; }
 }
 
 /* Instagram 埋め込み風カード（サンプル公開版で使用。本番は公式埋め込み） */
-.igCard { background: #fff; color: #262626; border: 1px solid #dbdbdb; max-width: 540px; margin: 0 auto; font-family: -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif; font-size: 14px; line-height: 1.5; }
-.igCard a { color: inherit; }
-.igCard .igHead { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid #efefef; }
-.igCard .igHead img { width: 36px; height: 36px; border: 1px solid #dbdbdb; }
-.igCard .igHead .igUser { flex: 1; font-weight: 600; font-size: 14px; }
-.igCard .igHead .igUser small { display: block; font-weight: 400; color: #737373; font-size: 12px; }
-.igCard .igHead .igLogo { display: flex; color: #262626; }
-.igCard .igGlyph { width: 24px; height: 24px; display: inline-block; vertical-align: middle; }
-.igCard .igFoot .igGlyph { width: 16px; height: 16px; margin-right: 4px; }
-.igCard .igPhoto img { width: 100%; display: block; }
-.igCard .igBody { padding: 12px 14px 14px; }
-.igCard .igIcons { display: flex; flex-wrap: wrap; gap: 6px 14px; color: #262626; font-size: 12px; margin-bottom: 8px; letter-spacing: .02em; }
-.igCard .igIcons span { white-space: nowrap; }
-.igCard .igIcons span::before { content: "◇"; margin-right: 4px; color: #737373; }
-.igCard .igCap { font-size: 13px; white-space: pre-line; }
-.igCard .igCap b { font-weight: 600; margin-right: 6px; }
-.igCard .igFoot { border-top: 1px solid #efefef; padding: 10px 14px; font-size: 12px; color: #737373; display: flex; justify-content: space-between; gap: 10px; }
-.igCard .igFoot a { color: #0095f6; font-weight: 600; }
 .mapAlt, .snsAlt { border: 1px solid var(--line-strong); background: var(--panel); padding: 28px 16px; text-align: center; }
 .mapAlt p, .snsAlt p { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
 
@@ -280,10 +262,16 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
    そのため iframe には触らず、上に重ねた透明の層の backdrop-filter で地図だけをモノクロにする（層は pointer-events:none で指の操作を通す） */
 .mapWrap iframe { display: block; width: 100%; height: 360px; border: 0; touch-action: auto; }
 .mapWrap::after { content: ""; position: absolute; inset: 0; pointer-events: none; -webkit-backdrop-filter: grayscale(1); backdrop-filter: grayscale(1); }
-/* SNS（Instagram・Facebook）の埋め込みも地図と同じ方法でモノクロにする（2026-11-07 オーナー指示。写真も含めて白黒になる） */
-.embedWrap { background: var(--panel); border: 1px solid var(--line); padding: 16px; position: relative; isolation: isolate; }
-.embedWrap::after { content: ""; position: absolute; inset: 0; pointer-events: none; -webkit-backdrop-filter: grayscale(1); backdrop-filter: grayscale(1); }
-.embedWrap .instagram-media { margin: 0 auto !important; max-width: 540px !important; min-width: 0 !important; border-radius: 0 !important; }
+/* Instagram の投稿カード：埋め込み（iframe）をやめ、サイト側で組む。カード全体が投稿へのリンク（2026-11-07 オーナー指示：「プロフィールを表示」などの Instagram 側の部品を出さない）。
+   投稿を差し替えるときは href の投稿 ID と images/thumb の写真を変える */
+.postCard { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line-strong); color: var(--text); text-decoration: none; }
+.postCard img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+.postCard .postMeta { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-top: 1px solid var(--line); }
+.postCard .postMeta strong { font-family: var(--serif); font-size: 15px; letter-spacing: .06em; color: var(--white); }
+.postCard .postMeta small { font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.postCard:hover { border-color: var(--accent); }
+.postCard:hover .postMeta small { color: var(--accent-2); }
+.postCard.single { max-width: 420px; }
 .igRow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .snsLinks { display: flex; flex-wrap: wrap; gap: 8px; }
 
