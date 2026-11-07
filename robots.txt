@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /sample-mono/
 
 Sitemap: https://www.keikadou.co.jp/sitemap.xml
