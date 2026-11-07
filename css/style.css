@@ -357,7 +357,7 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
   #site-title .brandTxt small { display: none; }
   #headContact { display: none; }
   /* ハンバーガー（三本線）。開くと×になる（2026-11-07 オーナー指示で「MENU」の文字をやめた） */
-  #menuToggle { display: block; position: relative; width: 44px; height: 44px; background: #000; border: 1px solid var(--accent); padding: 0; cursor: pointer; flex: 0 0 auto; }
+  #menuToggle { display: block; position: relative; width: 44px; height: 44px; background: transparent; border: 0; padding: 0; cursor: pointer; flex: 0 0 auto; }
   #menuToggle .bars, #menuToggle .bars::before, #menuToggle .bars::after { position: absolute; left: 11px; width: 20px; height: 2px; background: #fff; transition: transform .2s, background .2s; }
   #menuToggle .bars { top: 20px; }
   #menuToggle .bars::before, #menuToggle .bars::after { content: ""; left: 0; }
