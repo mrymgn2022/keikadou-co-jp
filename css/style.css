@@ -246,11 +246,8 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
 .btn.sm { padding: 6px 12px; font-size: 12px; }
 .btn.ghost { border-color: var(--line-strong); color: var(--text); }
 .btn.ghost:hover { border-color: var(--accent); }
-.btn.ig { border-color: #c13584; }
-.btn.ig:hover { background: linear-gradient(#000, #c13584); }
-.btn.tabelog { border-color: #f5a623; }
-.btn.fb { border-color: #1877f2; }
-.btn.fb:hover { background: linear-gradient(#000, #1877f2); }
+/* SNS・グルメサイトのボタンも枠は琥珀色で統一（2026-11-07 オーナー指示。以前は Instagram ピンク・Facebook 青・食べログ黄） */
+.btn.ig, .btn.fb, .btn.tabelog { border-color: var(--accent); }
 .btn.tel { border-color: var(--white); font-family: var(--serif); font-size: 16px; }
 .moreLink { text-align: right; margin-top: 16px; }
 
