@@ -278,9 +278,11 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
 .menuBox h4, .menuBox .h4 { margin-top: 0; }
 
 /* 地図・埋め込み */
-.mapWrap { border: 1px solid var(--line-strong); background: #000; }
-/* iframe に filter を掛けると iPhone の Safari で地図が指で動かせなくなるため、色の加工はしない */
+.mapWrap { border: 1px solid var(--line-strong); background: #000; position: relative; isolation: isolate; }
+/* iframe 自体に filter を掛けると iPhone の Safari で地図が指で動かせなくなる（2026-10-31）。
+   そのため iframe には触らず、上に重ねた透明の層の backdrop-filter で地図だけをモノクロにする（層は pointer-events:none で指の操作を通す） */
 .mapWrap iframe { display: block; width: 100%; height: 360px; border: 0; touch-action: auto; }
+.mapWrap::after { content: ""; position: absolute; inset: 0; pointer-events: none; -webkit-backdrop-filter: grayscale(1); backdrop-filter: grayscale(1); }
 .embedWrap { background: var(--panel); border: 1px solid var(--line); padding: 16px; }
 .embedWrap .instagram-media { margin: 0 auto !important; max-width: 540px !important; min-width: 0 !important; border-radius: 0 !important; }
 .igRow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
