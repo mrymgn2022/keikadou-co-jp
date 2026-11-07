@@ -87,8 +87,8 @@ table { border-collapse: collapse; width: 100%; }
 .igCard .igCap b { font-weight: 600; margin-right: 6px; }
 .igCard .igFoot { border-top: 1px solid #efefef; padding: 10px 14px; font-size: 12px; color: #737373; display: flex; justify-content: space-between; gap: 10px; }
 .igCard .igFoot a { color: #0095f6; font-weight: 600; }
-.mapAlt { border: 1px solid var(--line-strong); background: var(--panel); padding: 28px 16px; text-align: center; }
-.mapAlt p { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+.mapAlt, .snsAlt { border: 1px solid var(--line-strong); background: var(--panel); padding: 28px 16px; text-align: center; }
+.mapAlt p, .snsAlt p { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
 
 /* ---------- header ---------- */
 #header {
