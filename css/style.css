@@ -256,6 +256,13 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
 .menuBox { background: var(--panel); border: 1px solid var(--line); padding: 20px 22px; }
 .menuBox h4, .menuBox .h4 { margin-top: 0; }
 
+/* トップ：店舗一覧の下のエリア案内（湯島・上野）。2026-11-11 追加 */
+.areaGuide { max-width: 860px; margin: 56px auto 0; padding-top: 30px; border-top: 1px solid var(--line-strong); }
+.areaGuide h3 { font-family: var(--serif); font-size: 21px; color: var(--white); letter-spacing: .1em; margin: 0 0 12px; }
+.areaGuide p { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+.areaGuide .featureList li { line-height: 1.8; }
+.areaGuide .featureList strong { color: var(--white); font-weight: 500; }
+
 /* 店舗ページ下部「OTHER SHOPS」：他店の情報は載せず、トップの店舗一覧へ送る */
 .otherShops { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 30px 16px; border: 1px solid var(--line-strong); color: var(--white); text-decoration: none; }
 .otherShops .en { font-family: var(--serif); font-size: 26px; letter-spacing: .25em; }
