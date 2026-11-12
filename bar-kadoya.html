@@ -28,9 +28,9 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<!-- Web フォント（Noto Sans JP / Noto Serif JP）は画面幅 768px 以上のときだけ、描画を止めずに読み込む。スマホは端末のフォント（ヒラギノ／Noto）で表示する：2026-11-13 -->
+<script>if(window.matchMedia&&matchMedia('(min-width:768px)').matches){var wf=document.createElement('link');wf.rel='stylesheet';wf.href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap';document.head.appendChild(wf);}</script>
+<link rel="preload" as="image" href="images/kadoya-counter.webp" fetchpriority="high">
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
 {
@@ -67,11 +67,25 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "バーカドヤは何時まで営業していますか？", "acceptedAnswer": {"@type": "Answer", "text": "17:00から翌4:00まで（ラストオーダー 3:00）営業しています。定休日は日曜日です。"}},
+    {"@type": "Question", "name": "湯島駅や上野からの行き方は？", "acceptedAnswer": {"@type": "Answer", "text": "東京メトロ千代田線 湯島駅から徒歩2分です。銀座線 上野広小路駅からは徒歩5分、JR御徒町駅からは徒歩6分。湯島3-45-3、角地の黒い外観が目印です。"}},
+    {"@type": "Question", "name": "予約はできますか？", "acceptedAnswer": {"@type": "Answer", "text": "お電話（03-3831-4775）で承ります。"}},
+    {"@type": "Question", "name": "一人でも入れますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。お一人様、二軒目のご利用も歓迎です。"}},
+    {"@type": "Question", "name": "ボトルキープはできますか？", "acceptedAnswer": {"@type": "Answer", "text": "角瓶のボトルキープを承っています。"}},
+    {"@type": "Question", "name": "クレジットカードは使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "VISA・Master・JCB・AMEX・Diners がご利用いただけます。"}}
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skipLink" href="#pageTitBnr">本文へ移動</a>
 
-<div id="header">
+<div id="header" role="banner">
   <div class="headInner">
     <p id="site-title">
       <a href="/"><img src="images/logo.webp" alt="角ヤ（KADOYA）ロゴ" width="512" height="512" decoding="async"><span class="brandTxt"><strong>株式会社けいか堂飲料店</strong><small>Kadoya Group / Yushima, Tokyo</small></span></a>
@@ -97,6 +111,7 @@
     <li><a href="company.html">会社概要<span>company</span></a></li>
   </ul>
 </nav>
+<main id="main">
 
 <div id="pageTitBnr" class="bnr-kadoya"><div class="inner"><h1>バーカドヤ<small>BAR KADOYA — since the corner of Yushima</small></h1></div></div>
 <div class="container"><nav id="panList" aria-label="現在位置"><a href="/">HOME</a><span><a href="/#shops">店舗一覧</a></span><span>バーカドヤ</span></nav></div>
@@ -190,14 +205,30 @@
   </div>
 </section>
 
+<!-- よくあるご質問（店舗別）。本文と構造化データ（FAQPage）は同じ内容にすること：2026-11-13 追加 -->
+<section class="alt" id="faq">
+  <div class="container">
+    <div class="secHead"><h2>よくあるご質問<small>faq</small></h2></div>
+    <div class="faqList">
+      <details><summary>バーカドヤは何時まで営業していますか？</summary><p>17:00から翌4:00まで（ラストオーダー 3:00）営業しています。定休日は日曜日です。</p></details>
+      <details><summary>湯島駅や上野からの行き方は？</summary><p>東京メトロ千代田線 湯島駅から徒歩2分です。銀座線 上野広小路駅からは徒歩5分、JR御徒町駅からは徒歩6分。湯島3-45-3、角地の黒い外観が目印です。</p></details>
+      <details><summary>予約はできますか？</summary><p>お電話（03-3831-4775）で承ります。</p></details>
+      <details><summary>一人でも入れますか？</summary><p>はい。お一人様、二軒目のご利用も歓迎です。</p></details>
+      <details><summary>ボトルキープはできますか？</summary><p>角瓶のボトルキープを承っています。</p></details>
+      <details><summary>クレジットカードは使えますか？</summary><p>VISA・Master・JCB・AMEX・Diners がご利用いただけます。</p></details>
+    </div>
+  </div>
+</section>
+
 <!-- 他店舗（一覧はトップの店舗一覧へ。各店舗ページには他店の情報を載せない：2026-11-07 オーナー指示） -->
-<section class="alt">
+<section>
   <div class="container">
     <a class="otherShops" href="/#shops"><span class="en">OTHER SHOPS</span><small>けいか堂の店舗一覧へ ›</small></a>
   </div>
 </section>
 
-<div id="footMenu">
+</main>
+<div id="footMenu" role="contentinfo">
   <div class="footInner">
     <div class="footCompany"><img src="images/logo.webp" alt="" width="512" height="512" loading="lazy" decoding="async"><strong>株式会社けいか堂飲料店</strong>〒113-0034<br>東京都文京区湯島3-45-3<br>TEL 03-3831-4775（バーカドヤ）<br>全店 日曜定休（営業時間は店舗により異なります）</div>
     <div><h3 class="h4">店舗一覧</h3><ul><li><a href="bar-kadoya.html">バーカドヤ</a><small>17:00〜翌4:00（L.O.3:00）／03-3831-4775</small></li><li><a href="kuriharaya.html">宮城北部の酒と肴 くりはら屋</a><small>18:00〜翌4:00／03-3831-5256</small></li><li><a href="soba-kadoya-tenjin.html">蕎麦酒場 角ヤ 湯島天神</a><small>18:00〜翌3:00（金 翌4:00）／03-3831-8018</small></li><li><a href="soba-kadoya-kasuga.html">蕎麦酒場 角ヤ 春日テラス</a><small>18:00〜翌4:00／03-3834-4270</small></li></ul></div>

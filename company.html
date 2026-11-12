@@ -28,9 +28,9 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<!-- Web フォント（Noto Sans JP / Noto Serif JP）は画面幅 768px 以上のときだけ、描画を止めずに読み込む。スマホは端末のフォント（ヒラギノ／Noto）で表示する：2026-11-13 -->
+<script>if(window.matchMedia&&matchMedia('(min-width:768px)').matches){var wf=document.createElement('link');wf.rel='stylesheet';wf.href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap';document.head.appendChild(wf);}</script>
+<link rel="preload" as="image" href="images/kadoya-facade.webp" fetchpriority="high">
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
 {
@@ -46,7 +46,7 @@
 <body>
 <a class="skipLink" href="#pageTitBnr">本文へ移動</a>
 
-<div id="header">
+<div id="header" role="banner">
   <div class="headInner">
     <p id="site-title">
       <a href="/"><img src="images/logo.webp" alt="角ヤ（KADOYA）ロゴ" width="512" height="512" decoding="async"><span class="brandTxt"><strong>株式会社けいか堂飲料店</strong><small>Kadoya Group / Yushima, Tokyo</small></span></a>
@@ -72,6 +72,7 @@
     <li><a href="company.html">会社概要<span>company</span></a></li>
   </ul>
 </nav>
+<main id="main">
 
 <div id="pageTitBnr" class="bnr-company"><div class="inner"><h1>会社概要<small>COMPANY</small></h1></div></div>
 <div class="container"><nav id="panList" aria-label="現在位置"><a href="/">HOME</a><span>会社概要</span></nav></div>
@@ -138,7 +139,8 @@
 </section>
 
 
-<div id="footMenu">
+</main>
+<div id="footMenu" role="contentinfo">
   <div class="footInner">
     <div class="footCompany"><img src="images/logo.webp" alt="" width="512" height="512" loading="lazy" decoding="async"><strong>株式会社けいか堂飲料店</strong>〒113-0034<br>東京都文京区湯島3-45-3<br>TEL 03-3831-4775（バーカドヤ）<br>全店 日曜定休（営業時間は店舗により異なります）</div>
     <div><h3 class="h4">店舗一覧</h3><ul><li><a href="bar-kadoya.html">バーカドヤ</a><small>17:00〜翌4:00（L.O.3:00）／03-3831-4775</small></li><li><a href="kuriharaya.html">宮城北部の酒と肴 くりはら屋</a><small>18:00〜翌4:00／03-3831-5256</small></li><li><a href="soba-kadoya-tenjin.html">蕎麦酒場 角ヤ 湯島天神</a><small>18:00〜翌3:00（金 翌4:00）／03-3831-8018</small></li><li><a href="soba-kadoya-kasuga.html">蕎麦酒場 角ヤ 春日テラス</a><small>18:00〜翌4:00／03-3834-4270</small></li></ul></div>

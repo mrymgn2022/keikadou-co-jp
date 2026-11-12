@@ -56,8 +56,13 @@
     var paused = false;
     /* 「動きを減らす」設定の端末では自動再生しない（手動で送れる） */
     var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    /* 2枚目以降の写真は、最初の表示を邪魔しないよう後から読み込む（img の data-src → src）：2026-11-13 */
+    var loadSlide = function (s) { var im = s.querySelector('img[data-src]'); if (im) { im.src = im.getAttribute('data-src'); im.removeAttribute('data-src'); } };
+    var loadAllSlides = function () { setTimeout(function () { slides.forEach(loadSlide); }, 1200); };
+    if (document.readyState === 'complete') loadAllSlides(); else window.addEventListener('load', loadAllSlides);
     var show = function (n) {
       idx = (n + slides.length) % slides.length;
+      loadSlide(slides[idx]);
       slides.forEach(function (s, i) {
         s.classList.toggle('active', i === idx);
         s.setAttribute('aria-hidden', i === idx ? 'false' : 'true');

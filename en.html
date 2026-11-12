@@ -31,9 +31,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<!-- Web フォント（Noto Sans JP / Noto Serif JP）は画面幅 768px 以上のときだけ、描画を止めずに読み込む。スマホは端末のフォント（ヒラギノ／Noto）で表示する：2026-11-13 -->
+<script>if(window.matchMedia&&matchMedia('(min-width:768px)').matches){var wf=document.createElement('link');wf.rel='stylesheet';wf.href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap';document.head.appendChild(wf);}</script>
 <link rel="stylesheet" href="css/style.css">
 <style>
   body { font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif; }
@@ -51,7 +50,7 @@
 </head>
 <body>
 
-<div id="header">
+<div id="header" role="banner">
   <div class="headInner">
     <p id="site-title">
       <a href="/"><img src="images/logo.webp" alt="KADOYA logo" width="512" height="512" decoding="async"><span class="brandTxt"><strong>Keikadou Co., Ltd.</strong><small>Kadoya Group / Yushima, Tokyo</small></span></a>
@@ -74,6 +73,7 @@
     <li><a href="/" lang="ja">日本語<span>japanese</span></a></li>
   </ul>
 </nav>
+<main id="main">
 
 <div class="enHero">
   <img src="images/hero-kakubin.webp" alt="Suntory Kakubin whisky and a frosted copper mug at Bar Kadoya" width="1200" height="800" loading="lazy" decoding="async">
@@ -197,7 +197,8 @@
   </div>
 </section>
 
-<div id="footMenu">
+</main>
+<div id="footMenu" role="contentinfo">
   <div class="footInner">
     <div class="footCompany"><img src="images/logo.webp" alt="" width="512" height="512" loading="lazy" decoding="async"><strong>Keikadou Co., Ltd.</strong>3-45-3 Yushima, Bunkyo-ku, Tokyo 113-0034<br>+81-3-3831-4775 (Bar Kadoya)<br>Open 5 pm / 6 pm to late · Closed Sundays</div>
     <div><h3 class="h4">Shops</h3><ul><li><a href="#kadoya">Bar Kadoya</a></li><li><a href="#kuriharaya">Kuriharaya</a></li><li><a href="#soba">Soba Sakaba Kadoya · Yushima Tenjin</a></li><li><a href="#soba">Soba Sakaba Kadoya · Kasuga Terrace</a></li></ul></div>

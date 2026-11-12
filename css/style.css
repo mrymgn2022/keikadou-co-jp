@@ -14,7 +14,7 @@
   --accent-2: #e9a84b;
   --accent-dark: #8a5518;
   --white: #ffffff;
-  --serif: "Noto Serif JP", "ＭＳ Ｐ明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "ＭＳ Ｐ明朝", serif;
   --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
   --max: 1100px;
   color-scheme: dark;
@@ -255,6 +255,10 @@ h4, .h4 { font-size: 16px; color: var(--accent-2); margin: 20px 0 8px; letter-sp
 .menuList li::after { content: ""; }
 .menuBox { background: var(--panel); border: 1px solid var(--line); padding: 20px 22px; }
 .menuBox h4, .menuBox .h4 { margin-top: 0; }
+
+/* 本文中のリンクは下線で見分けられるようにする（色だけに頼らない）：2026-11-13 */
+.areaGuide a, .faqList a, .concept p a { text-decoration: underline; text-underline-offset: 3px; }
+main { display: block; }
 
 /* トップ：店舗一覧の下のエリア案内（湯島・上野）。2026-11-11 追加 */
 .areaGuide { max-width: 860px; margin: 56px auto 0; padding-top: 30px; border-top: 1px solid var(--line-strong); }

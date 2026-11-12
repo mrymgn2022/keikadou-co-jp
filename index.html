@@ -31,9 +31,8 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<!-- Web フォント（Noto Sans JP / Noto Serif JP）は画面幅 768px 以上のときだけ、描画を止めずに読み込む。スマホは端末のフォント（ヒラギノ／Noto）で表示する：2026-11-13 -->
+<script>if(window.matchMedia&&matchMedia('(min-width:768px)').matches){var wf=document.createElement('link');wf.rel='stylesheet';wf.href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap';document.head.appendChild(wf);}</script>
 <link rel="preload" as="image" href="images/hero-kakubin.webp" fetchpriority="high">
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
@@ -77,7 +76,7 @@
 <body class="home">
 <a class="skipLink" href="#topMainBnr">本文へ移動</a>
 
-<div id="header">
+<div id="header" role="banner">
   <div class="headInner">
     <h1 id="site-title">
       <a href="/"><img src="images/logo.webp" alt="角ヤ（KADOYA）ロゴ" width="512" height="512" decoding="async"><span class="brandTxt"><strong>株式会社けいか堂飲料店</strong><small>Kadoya Group / Yushima, Tokyo</small></span></a>
@@ -103,17 +102,18 @@
     <li><a href="company.html">会社概要<span>company</span></a></li>
   </ul>
 </nav>
+<main id="main">
 
 <!-- ===== メインビジュアル ===== -->
 <div id="topMainBnr">
   <div id="topMainBnrFrame">
     <div class="slider" role="region" aria-roledescription="スライドショー" aria-label="メインビジュアル">
       <div class="slide active"><img src="images/hero-kakubin.webp" alt="バーカドヤの角瓶と銅マグ" width="1200" height="800" fetchpriority="high" decoding="async"><div class="cap">銅マグで飲む、本当に美味しいハイボール<small>BAR KADOYA</small></div></div>
-      <div class="slide"><img src="images/hero-sake.webp" alt="くりはら屋の宮城の地酒 伯楽星・綿屋・栗駒山" width="1600" height="1100" loading="lazy" decoding="async"><div class="cap">宮城北部の酒と肴<small>KURIHARAYA</small></div></div>
-      <div class="slide"><img src="images/tenjin-noren.webp" alt="蕎麦酒場 角ヤ 湯島天神の暖簾と看板" width="1400" height="1430" loading="lazy" decoding="async"><div class="cap">呑んで、つまんで、蕎麦で〆る<small>SOBA SAKABA KADOYA</small></div></div>
-      <div class="slide"><img src="images/hero-foods.webp" alt="カドヤの煮込とナポリタン" width="1200" height="800" loading="lazy" decoding="async"><div class="cap">一品一品、心を込めて<small>酒場のアテ</small></div></div>
-      <div class="slide"><img src="images/hero-cheers.webp" alt="銅マグで乾杯" width="986" height="656" loading="lazy" decoding="async"><div class="cap">湯島で、今夜も乾杯<small>YUSHIMA, TOKYO</small></div></div>
-      <div class="slide"><img src="images/kadoya-counter.webp" alt="バーカドヤのカウンター" width="1200" height="800" loading="lazy" decoding="async"><div class="cap">照明が落ち着く、暖かく懐かしい雰囲気<small>BAR KADOYA</small></div></div>
+      <div class="slide"><img data-src="images/hero-sake.webp" alt="くりはら屋の宮城の地酒 伯楽星・綿屋・栗駒山" width="1600" height="1100" decoding="async"><div class="cap">宮城北部の酒と肴<small>KURIHARAYA</small></div></div>
+      <div class="slide"><img data-src="images/tenjin-noren.webp" alt="蕎麦酒場 角ヤ 湯島天神の暖簾と看板" width="1400" height="1430" decoding="async"><div class="cap">呑んで、つまんで、蕎麦で〆る<small>SOBA SAKABA KADOYA</small></div></div>
+      <div class="slide"><img data-src="images/hero-foods.webp" alt="カドヤの煮込とナポリタン" width="1200" height="800" decoding="async"><div class="cap">一品一品、心を込めて<small>酒場のアテ</small></div></div>
+      <div class="slide"><img data-src="images/hero-cheers.webp" alt="銅マグで乾杯" width="986" height="656" decoding="async"><div class="cap">湯島で、今夜も乾杯<small>YUSHIMA, TOKYO</small></div></div>
+      <div class="slide"><img data-src="images/kadoya-counter.webp" alt="バーカドヤのカウンター" width="1200" height="800" decoding="async"><div class="cap">照明が落ち着く、暖かく懐かしい雰囲気<small>BAR KADOYA</small></div></div>
     </div>
     <button class="sliderNav prev" aria-label="前の写真">‹</button>
     <button class="sliderNav next" aria-label="次の写真">›</button>
@@ -306,7 +306,8 @@
 </section>
 
 <!-- ===== footer ===== -->
-<div id="footMenu">
+</main>
+<div id="footMenu" role="contentinfo">
   <div class="footInner">
     <div class="footCompany">
       <img src="images/logo.webp" alt="" width="512" height="512" loading="lazy" decoding="async">
